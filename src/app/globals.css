@@ -1,0 +1,46 @@
+@import "tailwindcss";
+@import "@tabler/icons-webfont/dist/tabler-icons.css";
+
+@theme inline {
+  /* Brand palette — Belvara */
+  --color-cream: #f6f2e9;
+  --color-forest: #1c2b22;
+  --color-forest-secondary: #26392c;
+  --color-wood: #8b5e3c;
+  --color-gold: #c9a05a;
+  --color-gold-hover: #d9b370;
+  --color-ink: #2b2620;
+  --color-ink-soft: #4a4538;
+  --color-line: #e4dcc8;
+
+  /* Typography */
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    color: var(--color-forest);
+  }
+}
+
+/* Signature wood-slat texture — used as a placeholder background for product
+   imagery until real photography is available. */
+.bg-wood-slats {
+  background-image: repeating-linear-gradient(
+    135deg,
+    #7a5233 0px,
+    #7a5233 26px,
+    #8b5e3c 26px,
+    #8b5e3c 28px,
+    #654327 28px,
+    #654327 30px
+  );
+}
