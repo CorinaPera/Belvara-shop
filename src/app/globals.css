@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #1c2b22; /* verde închis - text, header */
+  --color-cream: #f6f2e9; /* fundal principal */
+  --color-eyebrow: #8b5e3c; /* accent maro - eyebrow, etichete */
+  --color-cta: #c9a05a; /* auriu - EXCLUSIV butoane call-to-action */
+}
+
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-cream: var(--color-cream);
+  --color-eyebrow: var(--color-eyebrow);
+  --color-cta: var(--color-cta);
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-primary);
+}
+
+/* Diagonal wood-slat pattern used as image placeholder across the site */
+.wood-slat-placeholder {
+  background-image: repeating-linear-gradient(
+    45deg,
+    #d8cdb8,
+    #d8cdb8 10px,
+    #cabb9e 10px,
+    #cabb9e 20px
+  );
+}
+
+/* Scrollbar hidden for the horizontal cart drawer / carousels if needed */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

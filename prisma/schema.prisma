@@ -1,0 +1,48 @@
+// Schema Prisma pentru catalogul Belvara.
+// Rulează `npx prisma migrate dev --name init` după ce ai DATABASE_URL în .env
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ProductCategory {
+  saltele
+  topere
+  perne
+  lenjerii
+  paturi
+}
+
+model Product {
+  id               String           @id @default(cuid())
+  slug             String           @unique
+  name             String
+  category         ProductCategory
+  shortDescription String
+  imageAlt         String
+  isActive         Boolean          @default(true)
+  variants         ProductVariant[]
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  @@index([category])
+}
+
+model ProductVariant {
+  id           String  @id @default(cuid())
+  label        String // ex: "140x200 cm"
+  priceRon     Int // preț în lei, fără subunități (bani întregi)
+  compareAtRon Int? // preț tăiat, opțional
+  inStock      Boolean @default(true)
+  sku          String? @unique
+
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String
+
+  @@index([productId])
+}
