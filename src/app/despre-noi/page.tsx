@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/site/page-hero";
 import { Button } from "@/components/ui/button";
@@ -42,7 +43,15 @@ export default function DespreNoiPage() {
               și pensiunilor care au nevoie de echipare la scară.
             </p>
           </div>
-          <div className="h-64 w-full rounded-2xl bg-wood-slats lg:h-full" />
+          <div className="relative h-72 w-full overflow-hidden rounded-2xl bg-cream sm:h-96 lg:h-full lg:min-h-[28rem]">
+            <Image
+              src="/despre-noi.jpg"
+              alt="Țesături naturale din in, împăturite, cu frunze de eucalipt"
+              fill
+              sizes="(min-width: 1024px) 560px, 100vw"
+              className="object-cover object-[50%_75%]"
+            />
+          </div>
         </div>
       </section>
 
