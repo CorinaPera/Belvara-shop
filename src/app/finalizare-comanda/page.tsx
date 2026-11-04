@@ -66,7 +66,7 @@ export default function FinalizareComandaPage() {
 
   const update =
     (field: TextField) =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
       setForm((prev) => ({ ...prev, [field]: e.target.value }));
 
   // La fel ca update(), dar transformă automat în majuscule — pentru câmpurile
