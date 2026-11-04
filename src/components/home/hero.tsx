@@ -1,9 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-/** Poza mare din dreapta, pe homepage. Înlocuiește link-ul cu orice altă poză vrei. */
-const HERO_IMAGE =
-  "https://eudorm.ro/wp-content/uploads/2020/08/Saltea-Alternotti-Biorest-Posture-80-_01.jpg";
+/** Poza mare din dreapta, pe homepage. Fișierul e în folderul public (hero.jpg). */
+const HERO_IMAGE = "/hero.jpg";
 
 export function Hero() {
   return (
@@ -29,15 +29,15 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="relative h-64 w-full overflow-hidden rounded-2xl bg-cream sm:h-80 lg:h-[26rem]">
-        {HERO_IMAGE && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={HERO_IMAGE}
-            alt="Saltea Belvara"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-        )}
+      <div className="relative h-72 w-full overflow-hidden rounded-2xl bg-cream sm:h-96 lg:h-[32rem]">
+        <Image
+          src={HERO_IMAGE}
+          alt="Dormitor luminos cu pat confortabil"
+          fill
+          priority
+          sizes="(min-width: 1024px) 560px, 100vw"
+          className="object-cover object-[50%_65%]"
+        />
       </div>
     </section>
   );
