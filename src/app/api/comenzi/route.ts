@@ -1,7 +1,15 @@
 import { NextResponse } from "next/server";
 import { createOrder, NewOrderInput } from "@/lib/orders";
+import { ORDERS_OPEN } from "@/lib/launch";
 
 export async function POST(request: Request) {
+  if (!ORDERS_OPEN) {
+    return NextResponse.json(
+      { error: "Comenzile online se vor deschide în curând. Ne poți contacta la office@belvara.ro." },
+      { status: 503 }
+    );
+  }
+
   let body: Partial<NewOrderInput>;
   try {
     body = await request.json();

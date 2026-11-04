@@ -3,6 +3,7 @@ import { Fraunces, Inter } from "next/font/google";
 import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
 import { CartProvider } from "@/lib/cart-context";
+import { ORDERS_OPEN } from "@/lib/launch";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -21,6 +22,8 @@ export const metadata: Metadata = {
   title: "Belvara — Saltele premium",
   description:
     "Saltele, paturi și accesorii de somn premium, cu materiale naturale și confort ortopedic.",
+  // Până la lansare, rugăm motoarele de căutare să nu indexeze site-ul.
+  robots: ORDERS_OPEN ? undefined : { index: false, follow: false },
 };
 
 export default function RootLayout({

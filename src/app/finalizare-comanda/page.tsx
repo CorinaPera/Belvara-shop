@@ -7,6 +7,8 @@ import { formatPrice } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/site/page-hero";
 import { JUDETE } from "@/lib/judete";
+import { ORDERS_OPEN } from "@/lib/launch";
+import Link from "next/link";
 
 const inputClass =
   "w-full rounded-lg border border-line bg-white px-4 py-2 font-sans text-sm text-ink focus:border-forest focus:outline-none";
@@ -114,6 +116,28 @@ export default function FinalizareComandaPage() {
       setSubmitting(false);
     }
   };
+
+  if (!ORDERS_OPEN) {
+    return (
+      <>
+        <PageHero
+          title="Comenzile se deschid în curând"
+          subtitle="Magazinul Belvara se pregătește de lansare."
+        />
+        <section className="mx-auto w-full max-w-7xl px-6 py-16">
+          <div className="max-w-2xl font-sans text-sm text-ink-soft">
+            <p>
+              Momentan nu putem prelua comenzi online. Dacă vrei să afli când deschidem sau ai o
+              întrebare, scrie-ne la office@belvara.ro sau sună-ne la 0743 773 871.
+            </p>
+            <Link href="/contact" className="mt-4 inline-block text-forest underline underline-offset-4">
+              Mergi la Contact
+            </Link>
+          </div>
+        </section>
+      </>
+    );
+  }
 
   if (items.length === 0) {
     return <PageHero title="Finalizare comandă" subtitle="Coșul tău este gol." />;
