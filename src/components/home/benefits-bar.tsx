@@ -1,6 +1,6 @@
 const benefits = [
   { icon: "ti-leaf", label: "Materiale naturale" },
-  { icon: "ti-lock", label: "Plată securizată Netopia" },
+  { icon: "ti-lock", label: "Plată la livrare sau prin transfer bancar" },
   { icon: "ti-truck", label: "Livrare prin Cargus, Fan Courier, Sameday" },
   { icon: "ti-certificate", label: "Garanție producător" },
 ];

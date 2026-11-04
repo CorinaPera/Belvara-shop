@@ -1,15 +1,10 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-const stats = [
-  { value: "120+", label: "Hoteluri și pensiuni partenere" },
-  { value: "15 ani", label: "Experiență în echiparea unităților de cazare" },
-];
-
 export function B2BSection() {
   return (
     <section className="bg-forest">
-      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-2 lg:items-center">
+      <div className="mx-auto max-w-7xl px-6 py-16">
         <div>
           <p className="font-sans text-sm font-medium uppercase tracking-wide text-gold">
             Belvara pentru hoteluri
@@ -26,15 +21,6 @@ export function B2BSection() {
               <Button variant="gold">Cere ofertă B2B</Button>
             </Link>
           </div>
-        </div>
-
-        <div className="grid grid-cols-2 gap-6">
-          {stats.map((s) => (
-            <div key={s.label} className="rounded-xl border border-cream/15 p-6">
-              <p className="font-display text-3xl font-medium text-gold">{s.value}</p>
-              <p className="mt-2 font-sans text-sm text-cream/80">{s.label}</p>
-            </div>
-          ))}
         </div>
       </div>
     </section>

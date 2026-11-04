@@ -38,8 +38,8 @@ export default function DespreNoiPage() {
             </p>
             <p>
               Selectăm fiecare colecție pe baza compoziției reale a materialelor, nu doar a
-              denumirii de marketing, și lucrăm atât cu clienți individuali, cât și cu hoteluri
-              și pensiuni care au nevoie de echipare la scară.
+              denumirii de marketing, și ne adresăm atât clienților individuali, cât și hotelurilor
+              și pensiunilor care au nevoie de echipare la scară.
             </p>
           </div>
           <div className="h-64 w-full rounded-2xl bg-wood-slats lg:h-full" />

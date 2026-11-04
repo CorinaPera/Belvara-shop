@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
+/** Poza mare din dreapta, pe homepage. Înlocuiește link-ul cu orice altă poză vrei. */
+const HERO_IMAGE =
+  "https://eudorm.ro/wp-content/uploads/2020/08/Saltea-Alternotti-Biorest-Posture-80-_01.jpg";
+
 export function Hero() {
   return (
     <section className="mx-auto w-full max-w-7xl grid gap-10 px-6 py-16 lg:grid-cols-2 lg:items-center lg:py-24">
@@ -25,7 +29,16 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="h-64 w-full rounded-2xl bg-wood-slats sm:h-80 lg:h-[26rem]" />
+      <div className="relative h-64 w-full overflow-hidden rounded-2xl bg-cream sm:h-80 lg:h-[26rem]">
+        {HERO_IMAGE && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={HERO_IMAGE}
+            alt="Saltea Belvara"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        )}
+      </div>
     </section>
   );
 }

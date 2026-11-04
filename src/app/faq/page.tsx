@@ -4,22 +4,22 @@ import { FaqAccordion } from "@/components/site/faq-accordion";
 const faqs = [
   {
     question: "Ce metode de plată acceptați?",
-    answer: "Plata online se procesează securizat prin Netopia Payments.",
+    answer: "Poți plăti ramburs, la livrare, direct curierului, sau prin transfer bancar. Alegi metoda la finalizarea comenzii.",
   },
   {
     question: "Cu ce curieri livrați?",
     answer:
-      "Livrăm prin Cargus, Fan Courier sau Sameday. Costul și termenul de livrare sunt afișate la finalizarea comenzii, în funcție de dimensiunea produsului și de localitate.",
+      "Livrăm prin Cargus, Fan Courier sau Sameday. Costul și termenul de livrare depind de dimensiunea produsului și de localitate și ți le comunicăm înainte de confirmarea comenzii.",
   },
   {
     question: "Pot returna un produs?",
     answer:
-      "Da, conform politicii de retur Belvara. Condițiile exacte pentru comanda ta sunt comunicate la finalizarea acesteia.",
+      "Da. Ai dreptul să te retragi din comandă în 14 zile de la primirea produselor, fără să ne spui motivul. Poți face asta din pagina Retragere din contract, iar detaliile despre returnare și rambursare sunt în Politici.",
   },
   {
     question: "Saltelele au garanție?",
     answer:
-      "Fiecare produs are o perioadă de garanție producător, specificată în secțiunea de specificații a paginii produsului.",
+      "Da. Produsele noi beneficiază de garanția legală de conformitate de 2 ani, iar unele au și o garanție comercială oferită de producător, indicată în descrierea produsului.",
   },
   {
     question: "Oferiți prețuri speciale pentru hoteluri sau pensiuni?",

@@ -1,6 +1,8 @@
 import { Firmness, formatPrice } from "@/lib/products";
 
 const firmnessLabels: Record<Firmness, string> = {
+  moale: "Moale",
+  "mediu-moale": "Mediu-moale",
   mediu: "Mediu",
   "mediu-ferm": "Mediu-ferm",
   ferm: "Ferm",

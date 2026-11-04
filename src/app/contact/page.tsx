@@ -1,9 +1,9 @@
 import { PageHero } from "@/components/site/page-hero";
-import { Button } from "@/components/ui/button";
+import { ContactForm } from "@/components/site/contact-form";
 
 const contactDetails = [
-  { icon: "ti-mail", label: "Email", value: "contact@belvara.ro" },
-  { icon: "ti-phone", label: "Telefon", value: "+40 700 000 000" },
+  { icon: "ti-mail", label: "Email", value: "office@belvara.ro" },
+  { icon: "ti-phone", label: "Telefon", value: "0743 773 871" },
   { icon: "ti-clock", label: "Program", value: "Luni – Vineri, 09:00 – 17:00" },
 ];
 
@@ -29,43 +29,7 @@ export default function ContactPage() {
             ))}
           </div>
 
-          <form className="flex flex-col gap-4 rounded-xl border border-line bg-white p-6">
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="name" className="font-sans text-sm font-medium text-forest">
-                  Nume
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  className="rounded-lg border border-line bg-cream px-3 py-2 font-sans text-sm text-ink outline-none focus:border-forest"
-                />
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="email" className="font-sans text-sm font-medium text-forest">
-                  Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  className="rounded-lg border border-line bg-cream px-3 py-2 font-sans text-sm text-ink outline-none focus:border-forest"
-                />
-              </div>
-            </div>
-            <div className="flex flex-col gap-1.5">
-              <label htmlFor="message" className="font-sans text-sm font-medium text-forest">
-                Mesaj
-              </label>
-              <textarea
-                id="message"
-                rows={5}
-                className="rounded-lg border border-line bg-cream px-3 py-2 font-sans text-sm text-ink outline-none focus:border-forest"
-              />
-            </div>
-            <Button type="button" variant="gold" className="self-start">
-              Trimite mesajul
-            </Button>
-          </form>
+          <ContactForm />
         </div>
       </section>
     </>

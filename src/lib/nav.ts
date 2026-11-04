@@ -1,10 +1,13 @@
+import { categories } from "@/lib/categories";
+
+// Legăturile către categorii se generează automat din categories.ts (doar cele cu live: true).
+// Nu le mai edita aici — schimbă live: true/false în categories.ts.
+const categoryLinks = categories
+  .filter((c) => c.live)
+  .map((c) => ({ label: c.label, href: `/${c.slug}` }));
+
 export const primaryNav = [
-  { label: "Saltele", href: "/saltele" },
-  { label: "Paturi", href: "/paturi" },
-  { label: "Toppere", href: "/toppere" },
-  { label: "Perne", href: "/perne" },
-  { label: "Lenjerii", href: "/lenjerii" },
-  { label: "Accesorii", href: "/accesorii" },
+  ...categoryLinks,
   { label: "Hoteluri (B2B)", href: "/hoteluri" },
   { label: "Promoții", href: "/promotii" },
 ];
@@ -12,14 +15,7 @@ export const primaryNav = [
 export const footerColumns = [
   {
     title: "Produse",
-    links: [
-      { label: "Saltele", href: "/saltele" },
-      { label: "Paturi", href: "/paturi" },
-      { label: "Toppere", href: "/toppere" },
-      { label: "Perne", href: "/perne" },
-      { label: "Lenjerii", href: "/lenjerii" },
-      { label: "Accesorii", href: "/accesorii" },
-    ],
+    links: categoryLinks,
   },
   {
     title: "Companie",
@@ -36,6 +32,7 @@ export const footerColumns = [
       { label: "Contact", href: "/contact" },
       { label: "FAQ", href: "/faq" },
       { label: "Politici", href: "/politici" },
+      { label: "Retragere din contract", href: "/retragere" },
     ],
   },
 ];

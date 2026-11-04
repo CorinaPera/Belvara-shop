@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { primaryNav } from "@/lib/nav";
 import { Button } from "@/components/ui/button";
+import { HeaderCartButton } from "@/components/site/header-cart-button";
 
 export function Header() {
   return (
@@ -29,9 +30,7 @@ export function Header() {
           <Button variant="ghost" size="icon" aria-label="Favorite">
             <i className="ti ti-heart text-lg" />
           </Button>
-          <Button variant="ghost" size="icon" aria-label="Coș">
-            <i className="ti ti-shopping-cart text-lg" />
-          </Button>
+          <HeaderCartButton />
         </div>
       </div>
     </header>

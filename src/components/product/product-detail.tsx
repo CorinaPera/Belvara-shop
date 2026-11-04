@@ -4,11 +4,13 @@ import { useMemo, useState } from "react";
 import { Product, formatPrice, getSizePricing } from "@/lib/products";
 import { getCategory } from "@/lib/categories";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/lib/cart-context";
 
 const tabs = ["Descriere", "Specificații", "Recenzii"] as const;
 type Tab = (typeof tabs)[number];
 
 export function ProductDetail({ product }: { product: Product }) {
+  const { addItem } = useCart();
   const [activeThumb, setActiveThumb] = useState(0);
   const [activeSize, setActiveSize] = useState<string>(product.sizes[0]);
   const [activeTab, setActiveTab] = useState<Tab>("Descriere");
@@ -38,19 +40,34 @@ export function ProductDetail({ product }: { product: Product }) {
 
       <div className="mt-6 grid gap-10 lg:grid-cols-2">
         <div>
-          <div className="aspect-square w-full rounded-2xl bg-wood-slats" />
-          <div className="mt-3 grid grid-cols-4 gap-3">
-            {[0, 1, 2, 3].map((i) => (
-              <button
-                key={i}
-                onClick={() => setActiveThumb(i)}
-                className={`aspect-square rounded-lg bg-wood-slats ${
-                  activeThumb === i ? "ring-2 ring-forest" : "opacity-70"
-                }`}
-                aria-label={`Imagine ${i + 1}`}
+          <div
+            className={`aspect-square w-full overflow-hidden rounded-2xl ${
+              product.imageUrl ? "bg-cream" : "bg-wood-slats"
+            }`}
+          >
+            {product.imageUrl && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={product.imageUrl}
+                alt={product.name}
+                className="h-full w-full object-cover"
               />
-            ))}
+            )}
           </div>
+          {!product.imageUrl && (
+            <div className="mt-3 grid grid-cols-4 gap-3">
+              {[0, 1, 2, 3].map((i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveThumb(i)}
+                  className={`aspect-square rounded-lg bg-wood-slats ${
+                    activeThumb === i ? "ring-2 ring-forest" : "opacity-70"
+                  }`}
+                  aria-label={`Imagine ${i + 1}`}
+                />
+              ))}
+            </div>
+          )}
         </div>
 
         <div>
@@ -59,11 +76,13 @@ export function ProductDetail({ product }: { product: Product }) {
           </p>
           <h1 className="mt-2 text-3xl">{product.name}</h1>
 
-          <div className="mt-2 flex items-center gap-1 font-sans text-sm text-ink-soft">
-            <i className="ti ti-star text-wood" />
-            <span className="font-medium text-ink">{product.rating}</span>
-            <span>({product.reviewCount} recenzii)</span>
-          </div>
+          {product.rating != null && (
+            <div className="mt-2 flex items-center gap-1 font-sans text-sm text-ink-soft">
+              <i className="ti ti-star text-wood" />
+              <span className="font-medium text-ink">{product.rating}</span>
+              <span>({product.reviewCount} recenzii)</span>
+            </div>
+          )}
 
           <div className="mt-4 flex flex-col gap-3 font-sans text-sm text-ink-soft">
             {product.description.map((p, i) => (
@@ -101,7 +120,21 @@ export function ProductDetail({ product }: { product: Product }) {
             </span>
           </div>
 
-          <Button variant="gold" size="lg" className="mt-4">
+          <Button
+            variant="gold"
+            size="lg"
+            className="mt-4"
+            onClick={() =>
+              addItem({
+                slug: product.slug,
+                category: product.category,
+                name: product.name,
+                size: activeSize,
+                unitPrice: finalPrice,
+                imageUrl: product.imageUrl,
+              })
+            }
+          >
             Adaugă în coș — {formatPrice(finalPrice)}
           </Button>
 
@@ -163,8 +196,9 @@ export function ProductDetail({ product }: { product: Product }) {
 
           {activeTab === "Recenzii" && (
             <p className="max-w-xl">
-              Nota medie este {product.rating} din 5, pe baza a {product.reviewCount} recenzii.
-              Recenziile detaliate vor fi disponibile în această secțiune.
+              {product.rating != null
+                ? `Nota medie este ${product.rating} din 5, pe baza a ${product.reviewCount} recenzii.`
+                : "Acest produs nu are încă recenzii. Fii primul care lasă o părere după ce primești comanda."}
             </p>
           )}
         </div>
