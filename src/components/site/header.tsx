@@ -12,10 +12,10 @@ export function Header() {
           <Image
             src="/logo-horizontal.png"
             alt="Belvara"
-            width={1362}
+            width={1724}
             height={520}
             priority
-            className="h-12 w-auto"
+            className="h-12 w-auto sm:h-16"
           />
         </Link>
 
