@@ -1,0 +1,113 @@
+BELVARA - GHID RAPID (admin, publicare, lansare)
+Actualizat: 4 noiembrie 2026
+
+Parolele NU sunt scrise aici. Parola de admin si adresa bazei de date sunt in fisierul
+.env.local (pe calculatorul tau) si in Vercel (Settings > Environment Variables).
+
+
+1. ADRESE UTILE
+---------------
+Site-ul public:                 https://belvara.ro   (merge si pe belvara-shop.vercel.app)
+Pe calculatorul tau (test):     http://localhost:3000   (doar cu "npm run dev" pornit)
+
+Dupa adresa site-ului adaugi (de exemplu belvara.ro/politici):
+
+  /politici                     Termeni, livrare, retur, garantie, confidentialitate, cookie-uri
+  /politici#retur               direct la sectiunea de retur (la fel: #termeni, #livrare,
+                                #garantie, #confidentialitate, #cookie-uri)
+  /retragere                    Formularul de retragere din contract (14 zile)
+  /contact                      Contact + formular de mesaj
+  /hoteluri                     Hoteluri (B2B) + formular de oferta
+  /faq                          Intrebari frecvente
+  /despre-noi                   Despre noi
+  /cos                          Cosul de cumparaturi
+  /finalizare-comanda           Finalizare comanda (inchisa pana la lansare)
+
+
+2. PAGINILE DE ADMIN (doar pentru tine, nu au link in meniul site-ului)
+-----------------------------------------------------------------------
+Intri la belvara.ro/admin/comenzi si te autentifici cu parola de admin. Dupa asta merg
+si celelalte pagini (raman deschise 7 zile in acelasi browser).
+
+  /admin/comenzi                Comenzile primite (apesi pe o comanda ca sa vezi detaliile;
+                                poti schimba statusul: noua, confirmata, expediata, finalizata,
+                                anulata)
+  /admin/retrageri              Cererile de retragere din contract
+  /admin/mesaje                 Mesajele din formularul de Contact
+  /admin/oferte-b2b             Cererile de oferta de la hoteluri si pensiuni
+
+Pe pagina de comenzi ai linkuri catre celelalte trei.
+Buton "Deconectare" - in dreapta sus, pe pagina de comenzi.
+
+
+3. CUM RULEZI SITE-UL PE CALCULATORUL TAU (pentru teste)
+--------------------------------------------------------
+1. Deschide folderul "belvara-shop" in File Explorer.
+2. In bara de adresa scrie  cmd  si apasa Enter.
+3. Scrie  npm run dev  si apasa Enter.
+4. Deschide in browser  http://localhost:3000
+5. Opresti cu Ctrl + C in fereastra neagra.
+(Daca apare "Module not found", ruleaza o data  npm install  si apoi  npm run dev.)
+
+Local, comenzile sunt mereu deschise, ca sa poti testa. Comenzile de test ajung in aceeasi
+baza de date ca pe site-ul real (Neon).
+
+
+4. CUM PUBLICI MODIFICARI PE INTERNET
+-------------------------------------
+Dupa ce schimbi ceva in proiect (sau dupa ce eu iti spun ca am modificat fisiere):
+
+1. Deschide fereastra neagra in folderul "belvara-shop" (cmd in bara de adresa).
+2. Ruleaza, pe rand:
+      git add .
+      git commit -m "descriere scurta a modificarii"
+      git push
+3. Vercel publica singur in 1-2 minute. In Vercel > proiectul belvara-shop > Deployments
+   trebuie sa apara "Ready" (verde). Daca apare "Error", trimite-mi captura.
+
+
+5. CUM DESCHIZI COMENZILE LA LANSARE
+------------------------------------
+Pana acum comenzile sunt OPRITE pe site-ul public (apare "Comenzile se deschid in curand")
+si Google este rugat sa nu indexeze site-ul. Cand esti gata sa lansezi:
+
+1. Vercel > belvara-shop > Settings > Environment Variables.
+2. Add Environment Variable:  Key = NEXT_PUBLIC_ORDERS_OPEN   Value = true
+3. Salveaza, apoi Deployments > ultima publicare > ... > Redeploy.
+4. Testeaza o comanda reala pe belvara.ro inainte sa anunti site-ul.
+
+Inainte de pasul 1, asigura-te ca ai: SRL inregistrat + CUI completat in /politici, pozele
+rezolvate, costul de transport stabilit, adresa de e-mail office@belvara.ro functionala.
+
+
+6. CE SE COMPLETEAZA CAND AI DATELE FIRMEI
+------------------------------------------
+Fisierul  src/app/politici/page.tsx,  la inceput, in blocul COMPANY:
+  - cui:    "[CUI - de completat dupa inregistrare]"
+  - regCom: "[nr. Reg. Com. - de completat dupa inregistrare]"
+Spune-mi cand le ai si le completez eu (apar automat in toate politicile).
+
+
+7. UNDE ESTE CE (conturi si servicii)
+-------------------------------------
+  - Codul:            GitHub, depozitul CorinaPera/Belvara-shop (ramura "main").
+                      Codul vechi (incercarea cu Prisma) e pastrat pe ramura "arhiva-veche".
+  - Publicarea:       Vercel, proiectul belvara-shop (plan Hobby).
+  - Baza de date:     Neon (proiectul "Belvara"), cu tabelele orders, withdrawals,
+                      contact_messages, b2b_requests (se creeaza singure).
+  - Domeniul si DNS:  Rackhost (belvara.ro). Inregistrari adaugate: A  @  -> 216.198.79.1
+                      si CNAME  www -> valoarea data de Vercel.
+                      NU schimba serverele de nume si nu sterge inregistrari MX/TXT daca
+                      adaugi mai tarziu e-mailul.
+
+
+8. PE LISTA DE FACUT MAI TARZIU
+-------------------------------
+  - E-mailuri automate (Resend), ca mesajele din formulare sa ajunga si pe office@belvara.ro.
+    Variabile de adaugat in Vercel si in .env.local: RESEND_API_KEY, NOTIFY_EMAIL.
+  - Banner de cookie-uri + statistici de vizitare (cand le adaugam, actualizam politicile).
+  - Costul de transport in cos (dupa contractele cu curierii): 35 lei perne/obiecte mici,
+    150 lei saltele (provizoriu).
+  - Plata cu cardul (Netopia), dupa ce ai CUI.
+  - Poze proprii / de la Mosen, in locul celor de pe eudorm.ro.
+  - Stergerea comenzii de test din baza de date, inainte de lansare.

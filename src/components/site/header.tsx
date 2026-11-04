@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { primaryNav } from "@/lib/nav";
 import { Button } from "@/components/ui/button";
@@ -7,8 +8,15 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-cream/95 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
-        <Link href="/" className="font-display text-2xl font-medium tracking-wide text-forest">
-          BELVARA
+        <Link href="/" aria-label="Belvara - prima pagină" className="flex items-center">
+          <Image
+            src="/logo-horizontal.png"
+            alt="Belvara"
+            width={1362}
+            height={520}
+            priority
+            className="h-12 w-auto"
+          />
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex">
