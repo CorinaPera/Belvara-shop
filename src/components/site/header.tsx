@@ -19,12 +19,12 @@ export function Header() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex">
+        <nav className="hidden items-center gap-8 lg:flex">
           {primaryNav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="font-sans text-sm font-medium text-ink-soft transition-colors hover:text-forest"
+              className="font-sans text-lg font-semibold text-ink transition-colors hover:text-forest"
             >
               {item.label}
             </Link>
@@ -41,6 +41,20 @@ export function Header() {
           <HeaderCartButton />
         </div>
       </div>
+
+      <nav className="border-t border-line lg:hidden" aria-label="Categorii">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 overflow-x-auto px-4 py-2">
+          {primaryNav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="whitespace-nowrap rounded-full px-3 py-1.5 font-sans text-base font-semibold text-ink hover:bg-white hover:text-forest"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      </nav>
     </header>
   );
 }
