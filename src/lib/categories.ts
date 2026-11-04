@@ -29,7 +29,7 @@ export const categories: CategoryMeta[] = [
     label: "Saltele",
     heroSubtitle:
       "Structuri memory, arcuri individuale și soluții ortopedice — inclusiv variante cu certificare medicală CE — alese pentru sprijin și durabilitate.",
-    image: "https://eudorm.ro/wp-content/uploads/2020/08/Saltea-Alternotti-Biorest-Posture-80-_01.jpg",
+    image: "/categorii/saltele.jpg",
     live: true,
   },
   {
@@ -37,7 +37,7 @@ export const categories: CategoryMeta[] = [
     label: "Perne",
     heroSubtitle:
       "Perne memory, din bambus, latex natural sau microfibră, pentru un somn odihnitor.",
-    image: "https://eudorm.ro/wp-content/uploads/2024/06/Perne-memory-cu-uleiuri-esentiale-10-buc.jpg",
+    image: "/categorii/perne.jpg",
     live: true,
   },
   {

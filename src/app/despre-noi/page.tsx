@@ -7,7 +7,7 @@ const values = [
   {
     icon: "ti-leaf",
     title: "Materiale alese cu grijă",
-    text: "Lucrăm cu memory foam, latex natural, lână merinos, fibră de bambus, fibră de soia și mătase, alese pentru confort și durabilitate.",
+    text: "Lucrăm cu memory foam, latex natural, lână merinos, fibră de bambus, fibră de soia, mătase și puf, alese pentru confort și durabilitate.",
   },
   {
     icon: "ti-ruler-2",
