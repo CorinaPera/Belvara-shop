@@ -7,7 +7,7 @@ const values = [
   {
     icon: "ti-leaf",
     title: "Materiale alese cu grijă",
-    text: "Lucrăm cu memory foam, latex natural, lână merinos și fibră de bambus, alese pentru confort și durabilitate.",
+    text: "Lucrăm cu memory foam, latex natural, lână merinos, fibră de bambus, fibră de soia și mătase, alese pentru confort și durabilitate.",
   },
   {
     icon: "ti-ruler-2",
@@ -30,7 +30,7 @@ export default function DespreNoiPage() {
       />
 
       <section className="mx-auto w-full max-w-7xl px-6 py-16">
-        <div className="grid gap-10 lg:grid-cols-2">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="flex flex-col gap-4 font-sans text-base text-ink-soft">
             <p>
               Belvara este un brand dedicat produselor pentru somn — saltele, paturi, toppere,
@@ -42,8 +42,17 @@ export default function DespreNoiPage() {
               denumirii de marketing, și ne adresăm atât clienților individuali, cât și hotelurilor
               și pensiunilor care au nevoie de echipare la scară.
             </p>
+            <p>
+              Credem că alegerea unei saltele sau a unei perne nu trebuie să fie o încercare la
+              noroc. De aceea, fiecare produs din magazin vine cu descrierea materialelor, nivelul
+              de fermitate și dimensiunile disponibile, ca să știi dinainte ce primești.
+            </p>
+            <p>
+              Dacă ai nevoie de ajutor la alegere, scrie-ne sau sună-ne. Îți spunem direct care
+              variantă se potrivește poziției tale de somn și preferințelor tale.
+            </p>
           </div>
-          <div className="relative h-72 w-full overflow-hidden rounded-2xl bg-cream sm:h-96 lg:h-full lg:min-h-[28rem]">
+          <div className="relative h-72 w-full overflow-hidden rounded-2xl bg-cream sm:h-80 lg:h-[26rem]">
             <Image
               src="/despre-noi.jpg"
               alt="Țesături naturale din in, împăturite, cu frunze de eucalipt"
